@@ -12,8 +12,11 @@ export class ProfilePage implements OnInit {
   myPost
 
   constructor(public fireStore: AngularFirestore, public alertController: AlertController) { 
-    this.myPost = this.fireStore.doc(`users/Kxov1VTzZlNBdqYPI97k6owVtAG3`).valueChanges()
-    this.showAlert(this.myPost, "toll")
+    this.fireStore.doc(`users/Kxov1VTzZlNBdqYPI97k6owVtAG3`)
+      .valueChanges()
+      .subscribe(data => {
+        this.myPost = data // data = {postText: "hallo finn", postTexts: "testtst"}
+     })
   }
 
 
