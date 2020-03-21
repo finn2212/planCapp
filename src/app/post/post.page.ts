@@ -1,4 +1,4 @@
-/*import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.serive';
@@ -14,15 +14,13 @@ export class PostPage implements OnInit {
 postID: string
 user: UserService
 
-  constructor(private route: ActivatedRoute, private afs: AngularFirestore, priavte user: UserService )
-   { 
-    this.user = user
-    
+  constructor(private route: ActivatedRoute, private afs: AngularFirestore)
+   {  
   }
 
   ngOnInit() {
     this.postID = this.route.snapshot.paramMap.get('id')
-    this.afs.doc(`users/${user.getUID()}`)
+    this.afs.doc(`users/${this.user.getUID()}`)
   }
 
-} */
+}

@@ -10,7 +10,7 @@ import {auth} from 'firebase/app'
 export class LoginPage implements OnInit {
 
   username: string =""
-  passwort: string = ""
+  password: string = ""
   constructor(public afAuth:AngularFireAuth) { }
 
   ngOnInit() {
@@ -18,9 +18,9 @@ export class LoginPage implements OnInit {
 
 
 async login(){
-  const { username, passwort} = this
+  const { username, password} = this
 try {
-  const res = await this.afAuth.auth.signInWithEmailAndPassword(username,passwort)
+  const res = await this.afAuth.auth.signInWithEmailAndPassword(username,password)
 
 
 } catch (err) {
