@@ -9,9 +9,11 @@ import { firestore } from 'firebase/app'
   templateUrl: './uploader.page.html',
   styleUrls: ['./uploader.page.scss'],
 })
-export class UploaderPage implements OnInit {
 
-  constructor(public fireStore: AngularFirestore, public user: UserService, public alert: AlertController) { }
+
+export class UploaderPage implements OnInit {
+  constructor(public fireStore: AngularFirestore, public user: UserService, public alert: AlertController) { 
+  }
 
   postText: string = ""
 
@@ -20,7 +22,7 @@ export class UploaderPage implements OnInit {
 
   post(){
        const postText = this.postText
-      this.fireStore.doc(`users/Kxov1VTzZlNBdqYPI97k6owVtAG3`/*`users/${this.user.getUID()}`*/).set({
+      this.fireStore.doc(`users/Kxov1VTzZlNBdqYPI97k6owVtAG3`/*`users/${this.user.getUID()}`*/).update({
       postText
       }
         )
