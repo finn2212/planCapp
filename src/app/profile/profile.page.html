@@ -1,12 +1,45 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
+  <ion-toolbar class="toolbar">
+    <ion-title>
+      Dein Profil
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true" class = "content">
+  <ion-grid>
+    <ion-row style="color: #5F6564;" class="ion-input">
+      <ion-input type="name" placeholder="your name"></ion-input>
+    </ion-row>
+     
+    <ion-row style="color: #5F6564;" class="ion-inpu">
+      <ion-input class="rowStyle" type="email" placeholder="your email"></ion-input>
+    </ion-row>
 
-  <!-- {{ myPost?.postText }} 
+    <ion-row style="color: #5F6564;" class="ion-inpu">
+      <ion-input class="rowStyle" type="ort" placeholder="your city"></ion-input>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card class="card">
+    <ion-grid>
+
+      <ion-row>
+        <ion-label class="label">Udo</ion-label>
+      </ion-row>
+
+      <ion-row>
+        <ion-label class="inhalt">
+          This is content, without any paragraph or header tags,
+          within an ion-card-content element.
+        </ion-label>
+      </ion-row>
+    </ion-grid>
+
+    
+  </ion-card>
+
+    <!-- {{ myPost?.postText }} 
   <br>
   {{ myPost?.postTexts }} -->
 

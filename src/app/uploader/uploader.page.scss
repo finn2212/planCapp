@@ -1,0 +1,46 @@
+.content{
+    --ion-background-color: #FFFFFF
+  }
+  
+  .toolbar{
+    --ion-background-color: #3C897A
+  }
+  
+  .label{
+    font-size: 16px;
+    color: #5F6564;
+  }
+  
+  .button{
+    border-radius: 4px;
+    font-size: 16px;
+    color: white;
+    height: 30px; 
+    width: 100%; 
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background-color: #3C897A;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .icon{
+    size: 20px;
+    color: #5F6564;
+    margin-left: 10px;
+  }
+  
+  .input{
+    border-radius: 10px;
+    font-size: 16px;
+    color: #5F6564;
+    border: 1px solid #E6E6E6;
+    width: 90%; 
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;  
+    margin-bottom: 10px;  
+    height: 200px;
+  }
+  
