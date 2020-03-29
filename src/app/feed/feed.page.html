@@ -5,133 +5,25 @@
 </ion-header>
 
 <ion-content class="content">
-  <ion-card class="card">
+  <ion-card *ngFor="let publicPost of publicPosts" class="card">
     <ion-grid>
 
       <ion-row>
-        <ion-label class="label">Udo</ion-label>
+        <ion-label class="label">{{publicPost.userId}}</ion-label>
       </ion-row>
 
       <ion-row>
-        <ion-label class="inhalt">
-          This is content, without any paragraph or header tags,
-          within an ion-card-content element.
-        </ion-label>
+        <ion-label class="inhalt">{{publicPost.text}}</ion-label>
       </ion-row>
 
       <ion-row>
         <ion-col>
           <ion-row>
-            <ion-label class="label">15km entfernt</ion-label>
+            <ion-label class="label">{{publicPost.location}}</ion-label>
           </ion-row>
 
           <ion-row>
-            <ion-label class="label">vor 20min</ion-label>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-button color="#3C897A" class="button">Hilfe anbieten</ion-button>
-      </ion-row>
-
-    </ion-grid>
-
-    
-  </ion-card>
-
-  <ion-card class="card">
-    <ion-grid>
-
-      <ion-row>
-        <ion-label class="label">Udo</ion-label>
-      </ion-row>
-
-      <ion-row>
-        <ion-label class="inhalt">
-          This is content, without any paragraph or header tags,
-          within an ion-card-content element.
-        </ion-label>
-      </ion-row>
-
-      <ion-row>
-        <ion-col>
-          <ion-row>
-            <ion-label class="label">15km entfernt</ion-label>
-          </ion-row>
-
-          <ion-row>
-            <ion-label class="label">vor 20min</ion-label>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-button color="#3C897A" class="button">Hilfe anbieten</ion-button>
-      </ion-row>
-
-    </ion-grid>
-
-    
-  </ion-card>
-
-  <ion-card class="card">
-    <ion-grid>
-
-      <ion-row>
-        <ion-label class="label">Udo</ion-label>
-      </ion-row>
-
-      <ion-row>
-        <ion-label class="inhalt">
-          This is content, without any paragraph or header tags,
-          within an ion-card-content element.
-        </ion-label>
-      </ion-row>
-
-      <ion-row>
-        <ion-col>
-          <ion-row>
-            <ion-label class="label">15km entfernt</ion-label>
-          </ion-row>
-
-          <ion-row>
-            <ion-label class="label">vor 20min</ion-label>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-button color="#3C897A" class="button">Hilfe anbieten</ion-button>
-      </ion-row>
-
-    </ion-grid>
-
-    
-  </ion-card>
-
-  <ion-card class="card">
-    <ion-grid>
-
-      <ion-row>
-        <ion-label class="label">Udo</ion-label>
-      </ion-row>
-
-      <ion-row>
-        <ion-label class="inhalt">
-          This is content, without any paragraph or header tags,
-          within an ion-card-content element.
-        </ion-label>
-      </ion-row>
-
-      <ion-row>
-        <ion-col>
-          <ion-row>
-            <ion-label class="label">15km entfernt</ion-label>
-          </ion-row>
-
-          <ion-row>
-            <ion-label class="label">vor 20min</ion-label>
+            <ion-label class="label">{{publicPost.postTime}}</ion-label>
           </ion-row>
         </ion-col>
       </ion-row>
