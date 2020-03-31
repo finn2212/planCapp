@@ -1,4 +1,5 @@
 import { DecimalPipe } from '@angular/common'; 
+import { PostAnswer } from 'src/viewmodel/PostAnswer';
 
 
 export class PublicPost {
@@ -7,13 +8,16 @@ export class PublicPost {
     text: string;
     location: string;
     postTime: string;
+    postCommends: Array<PostAnswer>
 
     constructor(id: string,userId: string, text: string, location: string, postTime: string){
         this.id = id,
         this.userId = userId,
         this.text = text,
         this.location = location,
-        this.postTime = postTime
+        this.postTime = postTime,
+        this.postCommends = new Array<PostAnswer>()
       }
+
 }
 
