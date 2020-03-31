@@ -1,36 +1,29 @@
 <ion-header>
-  <ion-toolbar class="toolbar">
-    <ion-searchbar class="searchbar" placeholder="Suche in deiner Stadt"></ion-searchbar>
+  <ion-toolbar>
+    <ion-title>relatedPosts</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="content">
-  <ion-card *ngFor="let publicPost of publicPosts; let i = index" [attr.data-index]="i" class="card">
+  <ion-card *ngFor="let publicPost of publicPosts;let i = index" [attr.data-index]="i" class="card">
     <ion-grid>
-
       <ion-row>
         <ion-label class="label">{{publicPost.id}}</ion-label>
       </ion-row>
-
       <ion-row>
         <ion-label class="inhalt">{{publicPost.text}}</ion-label>
       </ion-row>
-
       <ion-row>
         <ion-col>
           <ion-row>
             <ion-label class="label">{{publicPost.location}}</ion-label>
           </ion-row>
-
           <ion-row>
             <ion-label class="label">{{publicPost.postTime}}</ion-label>
           </ion-row>
         </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-button color="#3C897A" class="button" (click) ="presentAlertPrompt(i)">Hilfe anbieten</ion-button>
-      </ion-row>
+      </ion-row>     
+      
       <ion-card *ngFor="let answers of publicPosts[i].postCommends; let j = index" [attr.data-index]="j" class="card">
         <ion-grid>
           <ion-row>
@@ -45,8 +38,6 @@
           </ion-row>
         </ion-grid>
       </ion-card>
-
-
     </ion-grid>    
   </ion-card>
 </ion-content>

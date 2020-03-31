@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AlertController } from '@ionic/angular';
 import { Post } from 'src/viewmodel/Post';
+import { User } from 'src/viewmodel/User';
 
 @Component({
   selector: 'app-profile',

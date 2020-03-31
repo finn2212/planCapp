@@ -19,5 +19,10 @@ export class PublicPost {
         this.postCommends = new Array<PostAnswer>()
       }
 
+
+      commend(id: string, userId: string, text: string){
+        this.postCommends.push(new PostAnswer(id,userId,text))
+      }
+
 }
 
