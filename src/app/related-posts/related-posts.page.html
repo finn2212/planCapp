@@ -5,6 +5,9 @@
 </ion-header>
 
 <ion-content class="content">
+  <ion-row>
+    <ion-button color="#3C897A" class="button"  [routerLink]="['/tabs/profile']">Zurück</ion-button>
+  </ion-row>
   <ion-card *ngFor="let publicPost of publicPosts;let i = index" [attr.data-index]="i" class="card">
     <ion-grid>
       <ion-row>

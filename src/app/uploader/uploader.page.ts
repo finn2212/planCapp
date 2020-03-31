@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestor
 import { UserService } from '../user.serive';
 import {AlertController} from '@ionic/angular';
 import { firestore } from 'firebase/app';
-import { Post } from 'src/viewmodel/Post';
+import { PublicPost } from 'src/viewmodel/PublicPost';
 
 @Component({
   selector: 'app-uploader',
@@ -17,19 +17,16 @@ export class UploaderPage implements OnInit {
   }
 
   postCounter: 0
-  myPost: Post = new Post()
+  myPost: PublicPost;
   postText: string
 
   ngOnInit() {
   }
 
   post(){
-    // this.myPost.id = this.postCounter
-    this.myPost.userId = "1"
-    this.myPost.text = this.postText
-
+    this.myPost = new PublicPost("1","Finn",this.postText,"hamburg","12:00");
     
-    this.postCounter ++
+    
 
 
 

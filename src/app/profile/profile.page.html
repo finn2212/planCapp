@@ -8,16 +8,16 @@
 
 <ion-content [fullscreen]="true" class = "content">
   <ion-grid>
-    <ion-row style="color: #5F6564;" class="ion-input">
-      <ion-input type="name" placeholder="your name"></ion-input>
+    <ion-row style="color: #5F6564;" class="ion-input" >
+      <ion-input type="name" [readonly]=true> {{ user.name }}  </ion-input>
     </ion-row>
      
     <ion-row style="color: #5F6564;" class="ion-inpu">
-      <ion-input class="rowStyle" type="email" placeholder="your email"></ion-input>
+      <ion-input class="rowStyle" type="email"  [readonly]=true >{{ user.email }}</ion-input>
     </ion-row>
 
     <ion-row style="color: #5F6564;" class="ion-inpu">
-      <ion-input class="rowStyle" type="ort" placeholder="your city"></ion-input>
+      <ion-input class="rowStyle" type="ort" [readonly]=true >{{ user.location }}</ion-input>
     </ion-row>
   </ion-grid>
 
@@ -25,7 +25,10 @@
     <ion-grid>
 
       <ion-row>
-        <ion-label class="label">Udo</ion-label>
+        <ion-button color="#3C897A" class="button"   [routerLink]="['/related-posts']">Eigene Posts</ion-button>
+      </ion-row>
+      <ion-row>
+        <ion-button color="#3C897A" class="button"  [routerLink]="['/related-posts']">Kommentierte Posts</ion-button>
       </ion-row>
 
       <ion-row>
@@ -35,11 +38,5 @@
     </ion-grid>
 
     
-  </ion-card>
-
-    <!-- {{ myPost?.postText }} 
-  <br>
-  {{ myPost?.postTexts }} -->
-
-  {{ myPost.text }} 
+  </ion-card>  
 </ion-content>

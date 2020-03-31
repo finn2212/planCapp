@@ -12,14 +12,12 @@ import { User } from 'src/viewmodel/User';
 export class ProfilePage implements OnInit {
 
   // myPost
-
-  myPost: Post = new Post()
+ 
   posts: Post[]
+  user: User;
 
   constructor(public fireStore: AngularFirestore, public alertController: AlertController) { 
-    this.myPost.id = "42"
-    this.myPost.text = "Heikos Post"
-    this.myPost.userId = "0815"
+    this.user = new User("1","Finn","finn.stolle@web.de","Hamburg")
 
     /*
     this.fireStore.doc(`users/Kxov1VTzZlNBdqYPI97k6owVtAG3`)
@@ -57,5 +55,9 @@ export class ProfilePage implements OnInit {
     })
     await alert.present()
   }
+  routeToReleatedPosts(){
+    
+  }
+
 
 }
