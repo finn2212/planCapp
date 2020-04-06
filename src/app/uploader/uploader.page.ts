@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { UserService } from '../user.serive';
-import {AlertController} from '@ionic/angular';
+import {AlertController, LoadingController} from '@ionic/angular';
 import { firestore } from 'firebase/app';
 import { PublicPost } from 'src/viewmodel/PublicPost';
+import { Post, PostService } from '../post.service'
 
 @Component({
   selector: 'app-uploader',
@@ -13,7 +14,18 @@ import { PublicPost } from 'src/viewmodel/PublicPost';
 
 
 export class UploaderPage implements OnInit {
-  constructor(public fireStore: AngularFirestore, public user: UserService, public alert: AlertController) { 
+
+  postt: Post = {
+    id: '12',
+    text: 'test',
+    userId: 'Ulf'
+  }
+
+  constructor(public fireStore: AngularFirestore, public user: UserService, public alert: AlertController, private postService: PostService) { 
+  }
+
+  savePost() {
+    this.postService.addPost(this.postt)
   }
 
   postCounter: 0

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PublicPost } from 'src/viewmodel/PublicPost';
 import { PostAnswer } from 'src/viewmodel/PostAnswer';
 import { AlertController } from '@ionic/angular';
+import { PostService } from '../post.service';
+import { Post } from '../post.service'
 
 @Component({
   selector: 'app-feed',
@@ -9,7 +11,7 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./feed.page.scss'],
 })
 export class FeedPage implements OnInit {
-
+posts: Post[];
 
  
   publicPosts: Array<PublicPost> = [
@@ -18,7 +20,7 @@ export class FeedPage implements OnInit {
     new PublicPost("44", "Der bums läuft Junge!", "Florin", "Hamburg", "13:13")
   ]   
 
-  constructor(public alertCtrl: AlertController) {  this.publicPosts[0].postCommends = [
+  constructor(public postService: PostService, public alertCtrl: AlertController) {  this.publicPosts[0].postCommends = [
     new PostAnswer("0","Florin","ich kann helfen"),
     new PostAnswer("0","Finn","danke wann denn"),
     new PostAnswer("0","Florin","komme morgen um 12"),
@@ -37,7 +39,11 @@ export class FeedPage implements OnInit {
    }
 
   ngOnInit() {
-  }  
+   const postService = this.postService.getPosts()
+   postService.subscribe( res => {
+   this.posts = res;
+   })
+ } 
 
   async presentAlertPrompt(index: number) {
     const alert = await this.alertCtrl.create({

@@ -7,6 +7,25 @@
 </ion-header>
 
 <ion-content class="content">
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input required type ="text" placeholder="Text" [(ngModel)]="postt.text">
+
+      </ion-input>
+    </ion-item>
+      <ion-item>
+        <ion-input required type ="id" placeholder="ID" [(ngModel)]="postt.id"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input required type ="userID" placeholder="userID" [(ngModel)]="postt.userId"></ion-input>
+  </ion-item>
+  </ion-list>
+  <ion-button expand="full" (click) ="savePost()"> Posten
+
+  </ion-button>
+
+
   <ion-grid>
     <ion-row class="rowStyle">
       <ion-col size="auto">
