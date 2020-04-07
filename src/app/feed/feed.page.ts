@@ -39,8 +39,8 @@ posts: Post[];
    }
 
   ngOnInit() {
-   const postService = this.postService.getPosts()
-   postService.subscribe( res => {
+   const postCollection = this.postService.getPosts()
+   postCollection.subscribe( res => {
    this.posts = res;
    })
  } 
