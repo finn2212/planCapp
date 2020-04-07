@@ -7,26 +7,7 @@
 </ion-header>
 
 <ion-content class="content">
-  <ion-list lines="full">
-    <ion-item>
-      <ion-input required type ="text" placeholder="Text" [(ngModel)]="postt.text">
-
-      </ion-input>
-    </ion-item>
-      <ion-item>
-        <ion-input required type ="id" placeholder="ID" [(ngModel)]="postt.id"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input required type ="userID" placeholder="userID" [(ngModel)]="postt.userId"></ion-input>
-  </ion-item>
-  </ion-list>
-  <ion-button expand="full" (click) ="savePost()"> Posten
-
-  </ion-button>
-
-
-  <ion-grid>
+    <ion-grid>
     <ion-row class="rowStyle">
       <ion-col size="auto">
         <ion-icon class="icon" name ="person-outline"></ion-icon> 
@@ -49,13 +30,12 @@
        </ion-col>
       
     </ion-row>
-    <ion-row class
-    ="rowStyle">
+    <ion-row class="rowStyle">
       <ion-input class="input" placeholder="your text" type="text" [(ngModel)]="postText"></ion-input>
     </ion-row>
 
     <ion-row>
-      <button ion-button block round class="button" (click)="post()">Hilfe anfragen</button>
+      <button ion-button block round class="button" (click)="savePost()">Hilfe anfragen</button>
     </ion-row>
   </ion-grid>
   <ion-header collapse="condense">

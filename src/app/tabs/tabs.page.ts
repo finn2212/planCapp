@@ -1,8 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { PostService } from '../post.service';
-import { Post } from '../post.service'
-
-@Component({
+import { Component, OnInit } from '@angular/core';@Component({
   selector: 'app-tabs',
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],

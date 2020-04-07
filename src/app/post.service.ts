@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore'
 import { Observable } from 'rxjs';
-
+import { PublicPost } from 'src/viewmodel/PublicPost';
 import { map } from 'rxjs/operators';
 
-export interface Post {
-    id: string;
-    userId: string;
-    text: string;
-}
+
 
 
 @Injectable ({
@@ -16,12 +12,12 @@ export interface Post {
 })
 
 export class PostService {
-    private postsCollection: AngularFirestoreCollection<Post>
+    private postsCollection: AngularFirestoreCollection<PublicPost>
 
-    private posts: Observable<Post[]>
+    private posts: Observable<PublicPost[]>
 
      constructor(db: AngularFirestore) {
-        this.postsCollection = db.collection<Post>('posts');
+        this.postsCollection = db.collection<PublicPost>('PublicPostWithCommends');
         this.posts = this.postsCollection.snapshotChanges().pipe(
             map(actions => {
               return actions.map(a => {
@@ -39,10 +35,10 @@ getPosts(){
 }
 
 getPost(id) {
-    return this.postsCollection.doc<Post>(id).valueChanges();
+    return this.postsCollection.doc<PublicPost>(id).valueChanges();
 }
 
-addPost(post: Post) {
+addPost(post: PublicPost) {
     return this.postsCollection.add(post)
 }
 }

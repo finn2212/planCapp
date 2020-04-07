@@ -3,45 +3,24 @@ import { PublicPost } from 'src/viewmodel/PublicPost';
 import { PostAnswer } from 'src/viewmodel/PostAnswer';
 import { AlertController } from '@ionic/angular';
 import { PostService } from '../post.service';
-import { Post } from '../post.service'
-
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.page.html',
   styleUrls: ['./feed.page.scss'],
 })
 export class FeedPage implements OnInit {
-posts: Post[];
+
 
  
-  publicPosts: Array<PublicPost> = [
-    new PublicPost("42", "0815", "Ich benötige hilfe", "Hamburg", "12:01"),
-    new PublicPost("43", "Heikos erwrPost", "0dsr815", "Bremen", "12:02"),
-    new PublicPost("44", "Der bums läuft Junge!", "Florin", "Hamburg", "13:13")
-  ]   
-
-  constructor(public postService: PostService, public alertCtrl: AlertController) {  this.publicPosts[0].postCommends = [
-    new PostAnswer("0","Florin","ich kann helfen"),
-    new PostAnswer("0","Finn","danke wann denn"),
-    new PostAnswer("0","Florin","komme morgen um 12"),
-  ] 
-  this.publicPosts[1].postCommends = [
-    new PostAnswer("0","Florin","ich kann helfen"),
-    new PostAnswer("0","Finn","danke wann denn"),
-    new PostAnswer("0","Florin","komme morgen um 12"),
-  ] 
-  this.publicPosts[2].postCommends = [
-    new PostAnswer("0","Florin","ich kann helfen"),
-    new PostAnswer("0","Finn","danke wann denn"),
-    new PostAnswer("0","Florin","komme morgen um 12"),
-  ] 
+  publicPosts: Array<PublicPost>
+  constructor(public postService: PostService, public alertCtrl: AlertController) {     
     
    }
 
   ngOnInit() {
    const postCollection = this.postService.getPosts()
    postCollection.subscribe( res => {
-   this.posts = res;
+   this.publicPosts = res;
    })
  } 
 
@@ -68,7 +47,7 @@ posts: Post[];
           text: 'Antworten',
           handler: data => {
             console.log('Confirm Ok');
-            this.publicPosts[index].commend("1","Finn",data.answer)
+            this.publicPosts[index].postCommends.push(new PostAnswer("1","Finn",data.answer));
             
           }
         }
