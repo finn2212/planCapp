@@ -4,6 +4,8 @@
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content class="content">
   <ion-card *ngFor="let publicPost of publicPosts; let i = index" [attr.data-index]="i" class="card">
     <ion-grid>
@@ -35,7 +37,7 @@
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-row>
+             <ion-row>
                 <ion-label class="label">{{publicPost.postCommends[j].userId}}</ion-label>
               </ion-row>    
               <ion-row>

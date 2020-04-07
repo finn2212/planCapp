@@ -18,22 +18,6 @@ export class RelatedPostsPage implements OnInit {
   ] 
   constructor() {
 
-    this.publicPosts[0].postCommends = [
-      new PostAnswer("0","Florin","ich kann helfen"),
-      new PostAnswer("0","Finn","danke wann denn"),
-      new PostAnswer("0","Florin","komme morgen um 12"),
-    ] 
-    this.publicPosts[1].postCommends = [
-      new PostAnswer("0","Florin","ich kann helfen"),
-      new PostAnswer("0","Finn","danke wann denn"),
-      new PostAnswer("0","Florin","komme morgen um 12"),
-    ] 
-    this.publicPosts[2].postCommends = [
-      new PostAnswer("0","Florin","ich kann helfen"),
-      new PostAnswer("0","Finn","danke wann denn"),
-      new PostAnswer("0","Florin","komme morgen um 12"),
-    ] 
-
    }
 
   ngOnInit() {

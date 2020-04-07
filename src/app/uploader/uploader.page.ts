@@ -1,43 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestore} from '@angular/fire/firestore';
 import { UserService } from '../user.serive';
 import {AlertController} from '@ionic/angular';
-import { firestore } from 'firebase/app';
 import { PublicPost } from 'src/viewmodel/PublicPost';
+import {PostService } from '../post.service' 
 
 @Component({
   selector: 'app-uploader',
   templateUrl: './uploader.page.html',
   styleUrls: ['./uploader.page.scss'],
 })
-
-
 export class UploaderPage implements OnInit {
-  constructor(public fireStore: AngularFirestore, public user: UserService, public alert: AlertController) { 
-  }
 
-  postCounter: 0
-  myPost: PublicPost;
-  postText: string
+  
+  constructor(public fireStore: AngularFirestore, public user: UserService, public alert: AlertController, private postService: PostService) { 
+  } 
+
+  postText: string; 
 
   ngOnInit() {
   }
 
-  post(){
-    this.myPost = new PublicPost("1","Finn",this.postText,"hamburg","12:00");
+  savePost(){
     
+    console.log(this.postText)
     
-
-
-
-      /* const postText = this.postText
-      this.fireStore.doc(`users/Kxov1VTzZlNBdqYPI97k6owVtAG3``users/${this.user.getUID()}`).update({
-      postText
-      }
-        )
-      
-      */
-    }
+   let publicPost: PublicPost = new PublicPost("TestID","TestUser", this.postText,"testLoaction", "testTime");
+    this.postService.addPost(Object.assign({},publicPost));
+    this.postText="";
+  }
   }
     
 
