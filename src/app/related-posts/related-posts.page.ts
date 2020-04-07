@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicPost } from 'src/viewmodel/PublicPost';
 import { PostAnswer } from 'src/viewmodel/PostAnswer';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-related-posts',
@@ -9,18 +10,18 @@ import { PostAnswer } from 'src/viewmodel/PostAnswer';
 })
 export class RelatedPostsPage implements OnInit {
 
+  publicPost: Array<PublicPost>
 
-
-  publicPosts: Array<PublicPost> = [
-    new PublicPost("Finn", "Finn", "Kann mir wer helfen?", "Hamburg", "12:01"),
-    new PublicPost("43", "Heikos erwrPost", "0dsr815", "Bremen", "12:02"),
-    new PublicPost("44", "Der bums läuft Junge!", "Florin", "Hamburg", "13:13")
-  ] 
-  constructor() {
+  
+  constructor(public postService: PostService,) {
 
    }
 
   ngOnInit() {
+    const postCollection = this.postService.getPosts()
+    postCollection.subscribe( res => {
+    this.publicPost = res;
+    })
   }
 
 }

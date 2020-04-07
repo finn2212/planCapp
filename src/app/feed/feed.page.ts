@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PublicPost } from 'src/viewmodel/PublicPost';
 import { PostAnswer } from 'src/viewmodel/PostAnswer';
 import { AlertController } from '@ionic/angular';
-import { PostService } from '../post.service';
+import { PostService } from '../post.service'
+import { UserService } from '../user.serive'
+
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.page.html',
@@ -13,7 +15,7 @@ export class FeedPage implements OnInit {
 
  
   publicPosts: Array<PublicPost>
-  constructor(public postService: PostService, public alertCtrl: AlertController) {     
+  constructor(public postService: PostService, public alertCtrl: AlertController,private user: UserService) {     
     
    }
 
@@ -55,6 +57,7 @@ export class FeedPage implements OnInit {
     });
 
     await alert.present();
+    console.log(this.user.getUserName.toString)
   }
  
   }

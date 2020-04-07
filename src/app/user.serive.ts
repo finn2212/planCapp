@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core'
 import { AngularFireAuth } from '@angular/fire/auth'
 import {first} from 'rxjs/operators'
-import { auth } from 'firebase/app'
 
 
 interface user{
@@ -20,7 +19,9 @@ setUser(user: user){
   this.user
 }
   
-
+getUserName(){
+  return this.user.username
+}
 async isAuthenticated() {
   if(this.user) return true
 
