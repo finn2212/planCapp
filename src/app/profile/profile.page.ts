@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AlertController } from '@ionic/angular';
-import { User } from 'src/viewmodel/User';
+import { UserService } from '../user.serive'
 
 @Component({
   selector: 'app-profile',
@@ -10,12 +10,14 @@ import { User } from 'src/viewmodel/User';
 })
 export class ProfilePage implements OnInit { 
   
-  user: User;
-
-  constructor(public fireStore: AngularFirestore, public alertController: AlertController) { 
-    this.user = new User("1","Finn","finn.stolle@web.de","Hamburg")
+  
+  
+  constructor(public fireStore: AngularFirestore, public alertController: AlertController,public user: UserService) { 
+    
    
   }
+
+ 
   ngOnInit() {
     
   }
