@@ -25,10 +25,9 @@ export class UploaderPage implements OnInit {
     
     console.log(this.postText)
     
-   let publicPost: PublicPost = new PublicPost("TestID","Test", this.postText,"testLoaction", "testTime");
+   let publicPost: PublicPost = new PublicPost("postId",this.user.getUserName(),this.postText,"location","jetzt gerade")
     this.postService.addPost(Object.assign({},publicPost));
     this.postText="";
-    console.log(this.user.getUserName())
   }
   }
     

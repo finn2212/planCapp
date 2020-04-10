@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth'
 import {auth} from 'firebase/app'
 import { Router } from '@angular/router'
-
+import { UserService } from '../user.serive'
 import {AlertController} from '@ionic/angular'
 
 @Component({
@@ -18,7 +18,8 @@ export class RegisterPage implements OnInit {
 
         constructor(public afAuth: AngularFireAuth,
           public alert: AlertController,
-          public router: Router
+          public router: Router,
+          public user: UserService
           ) { }
 
         ngOnInit() {
@@ -36,6 +37,11 @@ async register(){
       console.log(res)
       this.showAlert("Sucess","Welcome aboard")
       this.router.navigate(['/tabs'])
+
+      this.user.setUser({
+				username,
+				uid: res.user.uid
+			})
 
     } catch (error) {
       console.dir(error)

@@ -17,7 +17,7 @@ export class PostService {
     private posts: Observable<PublicPost[]>
 
      constructor(db: AngularFirestore) {
-        this.postsCollection = db.collection<PublicPost>('PublicPostWithCommends');
+        this.postsCollection = db.collection<PublicPost>('DemoDatabase2');
         this.posts = this.postsCollection.snapshotChanges().pipe(
             map(actions => {
               return actions.map(a => {

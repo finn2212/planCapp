@@ -49,7 +49,7 @@ export class FeedPage implements OnInit {
           text: 'Antworten',
           handler: data => {
             console.log('Confirm Ok');
-            this.publicPosts[index].postCommends.push(new PostAnswer("1","Finn",data.answer));
+            this.publicPosts[index].postCommends.push(new PostAnswer("1",this.user.getUserName(),data.answer));
             
           }
         }
