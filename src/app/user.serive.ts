@@ -18,9 +18,7 @@ export class UserService{
     setUser(user: user){
       this.user = user
     }
-    getUser():user{
-     return this.user
-    }
+    
     getUserName():string{
       return this.user.username
     }
