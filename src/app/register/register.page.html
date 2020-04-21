@@ -21,7 +21,21 @@
 		  <ion-label class="label" position="floating">Confirm Password</ion-label>
 		  <ion-input class="ion-input" type="password" [(ngModel)]="cpassword"></ion-input>
 		</ion-item>
-	  
+	
+		<ion-item>
+		  <ion-label class="label" position="floating">First Name</ion-label>
+		  <ion-input class="ion-input" type="text" [(ngModel)]="firstName"></ion-input>
+		</ion-item>
+
+		<ion-item>
+		  <ion-label class="label" position="floating">Last Name</ion-label>
+		  <ion-input class="ion-input" type="text" [(ngModel)]="lastName"></ion-input>
+		</ion-item>
+		
+		<ion-item>
+		  <ion-label class="label" position="floating">Location</ion-label>
+		  <ion-input class="ion-input" type="text" [(ngModel)]="location"></ion-input>
+		</ion-item>
 	</ion-list>
 
 		<ion-button class="button" color="#3C897A" (click)="register()">Signup</ion-button>

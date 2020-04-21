@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth'
-import {auth} from 'firebase/app'
-import { Router } from '@angular/router'
-import { UserService } from '../user.serive'
-import {AlertController} from '@ionic/angular'
+import {AngularFireAuth} from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { UserService } from '../user.serive';
+import {AlertController} from '@ionic/angular';
+import { AngularFirestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-register',
@@ -12,17 +12,22 @@ import {AlertController} from '@ionic/angular'
 })
 export class RegisterPage implements OnInit {
 
-        username: string=""
-        password: string=""
-        cpassword: string=""
+        username: string="";
+        password: string="";
+        cpassword: string="";
+        firstName: string="";
+        lastName: string="";
+        location: string="";
 
         constructor(public afAuth: AngularFireAuth,
           public alert: AlertController,
           public router: Router,
-          public user: UserService
+          public user: UserService,
+          public db: AngularFirestore
           ) { }
 
         ngOnInit() {
+          
         }
 async register(){
 
@@ -38,9 +43,15 @@ async register(){
       this.showAlert("Sucess","Welcome aboard")
       this.router.navigate(['/tabs'])
 
+      this.db.collection('users').doc(res.user.uid).set({
+        location: this.location,
+        firstName: this.firstName,
+        lastName: this.lastName
+      });
+
       this.user.setUser({
 				username,
-				uid: res.user.uid
+        uid: res.user.uid
 			})
 
     } catch (error) {
@@ -54,7 +65,7 @@ async showAlert(header: string,message: string){
     message,
     buttons:["Ok"]
   })
-  await alert.present()
+  await alert.present();
 }
-
+ 
 }
