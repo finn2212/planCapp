@@ -47,9 +47,7 @@ async login(){
         console.log("user not found")
       }
     }    
-    if(this.user){
-      this.user.setUserInformation();
-    }
+   
 
     }
 

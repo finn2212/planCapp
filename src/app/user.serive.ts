@@ -20,6 +20,7 @@ export class UserService{
       }
     setUser(user: user){
       this.user = user
+      this.setUserInformation();
     } 
     
     
