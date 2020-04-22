@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core'
 import { AngularFireAuth } from '@angular/fire/auth'
 import {first} from 'rxjs/operators'
+import { UserInformationService } from './userInformation.service'
+import { UserInformation } from 'src/viewmodel/UserInformation'
 
 
 interface user{
@@ -10,9 +12,10 @@ interface user{
 
 @Injectable()
 export class UserService{
-      private user: user
-
-      constructor(private afAuth: AngularFireAuth){
+      private user: user;      
+      userInformation: UserInformation;
+      userInformations: Array<UserInformation> 
+      constructor(private afAuth: AngularFireAuth,public userInformationService:UserInformationService){
 
       }
     setUser(user: user){
@@ -20,6 +23,13 @@ export class UserService{
     } 
     
     
+    setUserInformation(){
+      const userCollection = this.userInformationService.getUsers()
+      userCollection.subscribe( res => {
+     this.userInformations = res;
+      })    
+      this.userInformation = this.userInformations.find(userInformation => userInformation.id = this.getUID())
+    }
     
     getUserName():string{
       return this.user.username
@@ -39,7 +49,9 @@ export class UserService{
       }
       return false
     }
-
+      getUserInformation(){
+        return this.userInformation;
+      }
 
       getUID():string{
         return this.user.uid

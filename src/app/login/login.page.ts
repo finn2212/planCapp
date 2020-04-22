@@ -31,12 +31,13 @@ async login(){
       
         const res = await this.afAuth.auth.signInWithEmailAndPassword(username,password)        
         
-        if(res.user) {
+        if(res.user) {          
           this.user.setUser({
             username,
             uid: res.user.uid
           })
-           this.readlocation();
+
+         
           this.router.navigate(['/tabs/feed'])
         }
        
@@ -46,29 +47,9 @@ async login(){
         console.log("user not found")
       }
     }    
-
+    if(this.user){
+      this.user.setUserInformation();
     }
-
-readlocation(){
-
-  var docRef = this.db.collection("users").doc(this.user.getUID());
-
-    docRef.get().toPromise().then(function(doc) {
-    if (doc.exists) {
-      var loc = doc.data().location;
-      console.log(loc);
-      console.log(this.user.location);        
-      this.user.setLocation(loc);
-       
-    } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-        
-    return null;
-        }
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
 
     }
 

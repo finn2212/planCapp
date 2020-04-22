@@ -69,5 +69,6 @@ async showAlert(header: string,message: string){
 
   let userInformation: UserInformation = new UserInformation(this.user.getUID(),this.firstName,this.lastName,this.location)
   this.userService.addUser(Object.assign({},userInformation));
+ 
  }
 }

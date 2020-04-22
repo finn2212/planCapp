@@ -24,6 +24,7 @@ export class FeedPage implements OnInit {
    postCollection.subscribe( res => {
    this.publicPosts = res;
    })
+  
  } 
 
   async presentAlertPrompt(index: number) {
