@@ -4,6 +4,8 @@ import { UserService } from '../user.serive';
 import {AlertController} from '@ionic/angular';
 import { PublicPost } from 'src/viewmodel/PublicPost';
 import {PostService } from '../post.service' 
+import { UserInformationService } from '../userInformation.service';
+import { UserInformation } from 'src/viewmodel/UserInformation';
 
 @Component({
   selector: 'app-uploader',
@@ -13,45 +15,37 @@ import {PostService } from '../post.service'
 export class UploaderPage implements OnInit {
 
   
-  constructor(public fireStore: AngularFirestore, public user: UserService, public alert: AlertController, private postService: PostService) { 
+  constructor(
+    public fireStore: AngularFirestore, 
+    public user: UserService, 
+    public alert: AlertController, 
+    private postService: PostService, 
+    public userInformationService:UserInformationService ) { 
   } 
 
   postText: string; 
   firstName: string;
+  userInformation: Array<UserInformation>
 
   ngOnInit() {
+    const userCollection = this.userInformationService.getUsers()
+    userCollection.subscribe( res => {
+    this.userInformation = res;
+    })
   }
 
   savePost(){
     
-    this.setUserInformation();
-    console.log(this.firstName);
-   let publicPost: PublicPost = new PublicPost("postId",this.user.getUserName(),this.postText,"location","jetzt gerade")
+    let user = this.getUserInformation()
+    let publicPost: PublicPost = new PublicPost("postId",user.firstName +" "+ user.lastName,this.postText,user.location,"jetzt gerade")
     this.postService.addPost(Object.assign({},publicPost));
     this.postText="";
   
   }
-  async setUserInformation(){
 
-    var docRef = await this.fireStore.collection("users").doc(this.user.getUID());
-  
-    await docRef.get().toPromise().then(function(doc) {
-      if (doc.exists) {
-        this.firstName= doc.data().firstName;
-        console.log(doc.data().lastName);  
-        console.log(doc.data().location);
-        console.log();
-      } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
-          
-      return null;
-          }
-      }).catch(function(error) {
-          console.log("Error getting document:", error);
-      });
-  
-      }
+ getUserInformation(){
+  return this.userInformation.find(userInformation => userInformation.id = this.user.getUID())
+ }
   }
     
 

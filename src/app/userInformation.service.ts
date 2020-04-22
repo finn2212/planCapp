@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore'
 import { Observable } from 'rxjs';
-import { PublicPost } from 'src/viewmodel/PublicPost';
+import { UserInformation } from 'src/viewmodel/UserInformation';
 import { map } from 'rxjs/operators';
 
 
@@ -11,14 +11,14 @@ import { map } from 'rxjs/operators';
     providedIn: 'root'
 })
 
-export class PostService {
-    private postsCollection: AngularFirestoreCollection<PublicPost>
+export class UserInformationService {
+    private userCollection: AngularFirestoreCollection<UserInformation>
 
-    private posts: Observable<PublicPost[]>
+    private users: Observable<UserInformation[]>
 
      constructor(db: AngularFirestore) {
-        this.postsCollection = db.collection<PublicPost>('DemoDatabase3');
-        this.posts = this.postsCollection.snapshotChanges().pipe(
+        this.userCollection = db.collection<UserInformation>('userInformation');
+        this.users = this.userCollection.snapshotChanges().pipe(
             map(actions => {
               return actions.map(a => {
                 const data = a.payload.doc.data();
@@ -30,15 +30,16 @@ export class PostService {
         
      }
 
-getPosts(){
-    return this.posts
+getUsers(){
+    return this.users
 }
 
-getPost(id) {
-    return this.postsCollection.doc<PublicPost>(id).valueChanges();
+getUser(id) {
+    return this.userCollection.doc<UserInformation>(id).valueChanges();
+  
 }
 
-addPost(post: PublicPost) {
-    return this.postsCollection.add(post)
+addUser(user: UserInformation) {
+    return this.userCollection.add(user)
 }
 }

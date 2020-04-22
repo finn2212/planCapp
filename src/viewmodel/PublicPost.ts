@@ -1,5 +1,3 @@
-  
-import { DecimalPipe } from '@angular/common'; 
 import { PostAnswer } from 'src/viewmodel/PostAnswer';
 
 

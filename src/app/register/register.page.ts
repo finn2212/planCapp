@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.serive';
 import {AlertController} from '@ionic/angular';
 import { AngularFirestore} from '@angular/fire/firestore';
+import { UserInformation } from 'src/viewmodel/UserInformation';
+import { UserInformationService } from '../userInformation.service';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +25,8 @@ export class RegisterPage implements OnInit {
           public alert: AlertController,
           public router: Router,
           public user: UserService,
-          public db: AngularFirestore
+          public db: AngularFirestore,
+          public userService: UserInformationService
           ) { }
 
         ngOnInit() {
@@ -41,18 +44,13 @@ async register(){
       const res = await this.afAuth.auth.createUserWithEmailAndPassword(username,password);
       console.log(res)
       this.showAlert("Sucess","Welcome aboard")
-      this.router.navigate(['/tabs'])
-
-      this.db.collection('users').doc(res.user.uid).set({
-        location: this.location,
-        firstName: this.firstName,
-        lastName: this.lastName
-      });
+      this.router.navigate(['/tabs'])   
 
       this.user.setUser({
 				username,
         uid: res.user.uid
-			})
+      })
+      this.setUserInformation();
 
     } catch (error) {
       console.dir(error)
@@ -67,5 +65,9 @@ async showAlert(header: string,message: string){
   })
   await alert.present();
 }
- 
+ setUserInformation(){
+
+  let userInformation: UserInformation = new UserInformation(this.user.getUID(),this.firstName,this.lastName,this.location)
+  this.userService.addUser(Object.assign({},userInformation));
+ }
 }
